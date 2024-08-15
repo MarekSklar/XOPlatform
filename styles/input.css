@@ -24,11 +24,15 @@
     }
 
     .board {
-        @apply max-w-[50vw] max-h-[70dvh] aspect-square grid outline-1 outline-gray outline cursor-pointer;
+        @apply max-w-[60vw] max-h-[80dvh] aspect-square grid outline-1 outline-gray outline;
         grid-template-columns: repeat(15, minmax(0, 1fr));
         
-        div {
-            @apply w-wfa aspect-square outline-[0.5px] outline-gray outline;
+        .board-box {
+            @apply flex items-center justify-center w-wfa aspect-square outline-[0.5px] outline-gray outline cursor-pointer;
+
+            img {
+                @apply size-5/6;
+            }
         }
     }
 }

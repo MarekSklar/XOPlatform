@@ -4,11 +4,30 @@ const playerType = {
 };
 
 let player = playerType.x;
-const table = Array.from({ length: 15 }, () => Array(15).fill(null));
+let table = Array.from({ length: 15 }, () => Array(15).fill(null));
 
 function endGame() {
     document.querySelector("#menu").classList.remove("hidden");
     document.querySelector("#game").classList.add("hidden");
+}
+
+function clearGame() {
+    // clear element
+    const boardBoxes = document.querySelectorAll('.board-box');
+    for (let i = 0; i < boardBoxes.length; i++) {
+        const boardBox = boardBoxes[i];
+        boardBox.innerHTML = "";
+    }
+
+    // clear 2D array
+    table = Array.from({ length: 15 }, () => Array(15).fill(null));
+
+    // reset player
+    player = playerType.x;
+
+    // hide win popup
+    document.querySelector("#win-popup").classList.add("hidden");
+    document.querySelector("#win-popup").classList.remove("flex");
 }
 
 function play(x, y) {
@@ -22,7 +41,11 @@ function placeSymbol(x, y) {
 
     // place in element
     const linearCoords = 15*y + x;
-    document.querySelectorAll('.board-box')[linearCoords].innerHTML = player ? "x" : "o";
+
+    const img = document.createElement('img');
+    img.src = `assets/img/${player ? "x" : "o"}.svg`;
+    
+    document.querySelectorAll('.board-box')[linearCoords].appendChild(img);
 
     // place in 2D array
     table[x][y] = player;
@@ -30,11 +53,14 @@ function placeSymbol(x, y) {
 
 function checkWin(x, y) {
     const winStar = [
-        [table[x][y-4], table[x][y-3], table[x][y-2], table[x][y-1], table[x][y], table[x][y+1], table[x][y+2], table[x][y+3], table[x][y+4]],
-        [table[x-4][y], table[x-3][y], table[x-2][y], table[x-1][y], table[x][y], table[x+1][y], table[x+2][y], table[x+3][y], table[x+4][y]],
-        [table[x-4][y-4], table[x-3][y-3], table[x-2][y-2], table[x-1][y-1], table[x][y], table[x+1][y+1], table[x+2][y+2], table[x+3][y+3], table[x+4][y+4]],
-        [table[x-4][y+4], table[x-3][y+3], table[x-2][y+2], table[x-1][y+1], table[x][y], table[x+1][y-1], table[x+2][y-2], table[x+3][y-3], table[x+4][y-4]],
-    ]
+        [table[x]?.[y-4] ?? null, table[x]?.[y-3] ?? null, table[x]?.[y-2] ?? null, table[x]?.[y-1] ?? null, table[x]?.[y] ?? null, table[x]?.[y+1] ?? null, table[x]?.[y+2] ?? null, table[x]?.[y+3] ?? null, table[x]?.[y+4] ?? null],
+        [table[x-4]?.[y] ?? null, table[x-3]?.[y] ?? null, table[x-2]?.[y] ?? null, table[x-1]?.[y] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y] ?? null, table[x+2]?.[y] ?? null, table[x+3]?.[y] ?? null, table[x+4]?.[y] ?? null],
+        [table[x-4]?.[y-4] ?? null, table[x-3]?.[y-3] ?? null, table[x-2]?.[y-2] ?? null, table[x-1]?.[y-1] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y+1] ?? null, table[x+2]?.[y+2] ?? null, table[x+3]?.[y+3] ?? null, table[x+4]?.[y+4] ?? null],
+        [table[x-4]?.[y+4] ?? null, table[x-3]?.[y+3] ?? null, table[x-2]?.[y+2] ?? null, table[x-1]?.[y+1] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y-1] ?? null, table[x+2]?.[y-2] ?? null, table[x+3]?.[y-3] ?? null, table[x+4]?.[y-4] ?? null]
+    ];
+
+    console.log(winStar);
+    
 
     let winValue = 0;
 
@@ -55,8 +81,23 @@ function checkWin(x, y) {
 }
 
 function activateWin() {
-    console.log(`Hráč s ${player} vyhrál`);
+    // edit text
+    document.querySelector("#win-message").textContent = player ? "Křížek Vyhrál" : "Kolečko vyhrálo";
     
+    // edit gradient
+    document.querySelector("#win-popup").classList.remove("hidden");
+
+    if (player) {
+        document.querySelector("#win-popup").classList.remove("from-red/50");
+        document.querySelector("#win-popup").classList.add("from-blue/50");
+    } else {
+        document.querySelector("#win-popup").classList.remove("from-blue/50");
+        document.querySelector("#win-popup").classList.add("from-red/50");
+    }
+
+    // show win popup
+    document.querySelector("#win-popup").classList.remove("hidden");
+    document.querySelector("#win-popup").classList.add("flex");
 }
 
 function togglePlayer() {

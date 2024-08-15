@@ -4,8 +4,11 @@ module.exports = {
     theme: {
         colors: {
             blue: "#084886",
+            blue99: "#08488699",
+            red: "#E31837",
             white: "#fff",
-            gray: "#b4b4b4"
+            gray: "#b4b4b4",
+            black: "#000"
         },
         fontFamily: {
             dosis: ["Dosis", "sans-serif"]
