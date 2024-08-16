@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pIšQworky</title>
     <link rel="stylesheet" href="styles/output.css">
-    <script defer src="script/menu.js"></script>
-    <script defer src="script/game.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+    <script defer src="script/index.js"></script>
 </head>
-<body class="">
+<body>
     <!-- menu -->
-    <div id="menu" class="center bg-blue min-h-[100dvh]">
+    <div id="menu" class="center min-h-[100dvh] bg-blue">
         <img src="assets/img/logo.svg" class="w-6/12 mt-36 mb-7">
         <div class="center gap-20">
             <div class="center gap-4 text-center">
@@ -18,14 +18,14 @@
                 <p>Tak se předveď. Pět v řadě vyhrává.</p>
             </div>
             <div class="center gap-5">
-                <button onclick="startGame()">Vrátit do hry</button>
+                <button id="game-back-button" onclick="startGame()" class="hidden">Vrátit do hry</button>
                 <button onclick="startGame(); clearGame()">Nová hra</button>
             </div>
         </div>
         <img src="assets/img/qr_code_light.svg" class="absolute right-0 bottom-0 m-10 size-56">
     </div>
     <!-- game -->
-    <div id="game" class="hidden">
+    <div id="game" class="hidden min-h-[100dvh] flex-col">
         <header class="flex justify-between items-center h-24 px-12 bg-blue">
             <div class="flex items-center gap-10 h-full">
                 <img src="assets/img/logo.svg" onclick="endGame()" class="h-[60%]">
@@ -33,242 +33,269 @@
             </div>
             <p onclick="endGame()" class="text-2xl cursor-pointer">Menu</p>
         </header>
-        <div class="h-fit">
-            <div class="board relative m-6">
-                <div id="win-popup" class="absolute items-center justify-center hidden size-full bg-[radial-gradient(closest-side,_var(--tw-gradient-stops))] from-blue/50 to-blue/0">
-                    <div class="p-5 text-center bg-white rounded-md">
-                        <p id="win-message" class="text-black font-bold">Křížek vyhrál</p>
-                        <button onclick="clearGame()">Nová hra</button>
+        <div class="flex gap-7 flex-grow w-full mt-8">
+            <div class="flex-grow ml-7">
+                <div class="board relative">
+                    <div id="win-popup-x" class="win-popup absolute items-center justify-center hidden size-full bg-[radial-gradient(closest-side,_var(--tw-gradient-stops))] from-blue/40 to-blue/0">
+                        <div class="relative p-5 text-center bg-white rounded-md win-back win-back-x">
+                            <div>
+                                <p class="text-black font-bold">Křížek vyhrál</p>
+                                <button onclick="clearGame()" class="bg-white/0 text-blue">Nová hra</button>
+                            </div>
+                            <div class="absolute">
+                                <img src="assets/img/x.svg">
+                                <img src="assets/img/o.svg">
+                            </div>
+                        </div>
                     </div>
+                    <div id="win-popup-o" class="win-popup absolute items-center justify-center hidden size-full bg-[radial-gradient(closest-side,_var(--tw-gradient-stops))] from-red/40 to-red/0">
+                        <div class="relative p-5 text-center bg-white rounded-md win-back win-back-o">
+                            <div>
+                                <p class="text-black font-bold">Kolečko vyhrálo</p>
+                                <button onclick="clearGame()" class="bg-white/0 text-red">Nová hra</button>
+                            </div>
+                            <div class="absolute">
+                                <img src="assets/img/x.svg">
+                                <img src="assets/img/o.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-box" onclick="play(0, 0)"></div>
+                    <div class="board-box" onclick="play(1, 0)"></div>
+                    <div class="board-box" onclick="play(2, 0)"></div>
+                    <div class="board-box" onclick="play(3, 0)"></div>
+                    <div class="board-box" onclick="play(4, 0)"></div>
+                    <div class="board-box" onclick="play(5, 0)"></div>
+                    <div class="board-box" onclick="play(6, 0)"></div>
+                    <div class="board-box" onclick="play(7, 0)"></div>
+                    <div class="board-box" onclick="play(8, 0)"></div>
+                    <div class="board-box" onclick="play(9, 0)"></div>
+                    <div class="board-box" onclick="play(10, 0)"></div>
+                    <div class="board-box" onclick="play(11, 0)"></div>
+                    <div class="board-box" onclick="play(12, 0)"></div>
+                    <div class="board-box" onclick="play(13, 0)"></div>
+                    <div class="board-box" onclick="play(14, 0)"></div>
+                    <div class="board-box" onclick="play(0, 1)"></div>
+                    <div class="board-box" onclick="play(1, 1)"></div>
+                    <div class="board-box" onclick="play(2, 1)"></div>
+                    <div class="board-box" onclick="play(3, 1)"></div>
+                    <div class="board-box" onclick="play(4, 1)"></div>
+                    <div class="board-box" onclick="play(5, 1)"></div>
+                    <div class="board-box" onclick="play(6, 1)"></div>
+                    <div class="board-box" onclick="play(7, 1)"></div>
+                    <div class="board-box" onclick="play(8, 1)"></div>
+                    <div class="board-box" onclick="play(9, 1)"></div>
+                    <div class="board-box" onclick="play(10, 1)"></div>
+                    <div class="board-box" onclick="play(11, 1)"></div>
+                    <div class="board-box" onclick="play(12, 1)"></div>
+                    <div class="board-box" onclick="play(13, 1)"></div>
+                    <div class="board-box" onclick="play(14, 1)"></div>
+                    <div class="board-box" onclick="play(0, 2)"></div>
+                    <div class="board-box" onclick="play(1, 2)"></div>
+                    <div class="board-box" onclick="play(2, 2)"></div>
+                    <div class="board-box" onclick="play(3, 2)"></div>
+                    <div class="board-box" onclick="play(4, 2)"></div>
+                    <div class="board-box" onclick="play(5, 2)"></div>
+                    <div class="board-box" onclick="play(6, 2)"></div>
+                    <div class="board-box" onclick="play(7, 2)"></div>
+                    <div class="board-box" onclick="play(8, 2)"></div>
+                    <div class="board-box" onclick="play(9, 2)"></div>
+                    <div class="board-box" onclick="play(10, 2)"></div>
+                    <div class="board-box" onclick="play(11, 2)"></div>
+                    <div class="board-box" onclick="play(12, 2)"></div>
+                    <div class="board-box" onclick="play(13, 2)"></div>
+                    <div class="board-box" onclick="play(14, 2)"></div>
+                    <div class="board-box" onclick="play(0, 3)"></div>
+                    <div class="board-box" onclick="play(1, 3)"></div>
+                    <div class="board-box" onclick="play(2, 3)"></div>
+                    <div class="board-box" onclick="play(3, 3)"></div>
+                    <div class="board-box" onclick="play(4, 3)"></div>
+                    <div class="board-box" onclick="play(5, 3)"></div>
+                    <div class="board-box" onclick="play(6, 3)"></div>
+                    <div class="board-box" onclick="play(7, 3)"></div>
+                    <div class="board-box" onclick="play(8, 3)"></div>
+                    <div class="board-box" onclick="play(9, 3)"></div>
+                    <div class="board-box" onclick="play(10, 3)"></div>
+                    <div class="board-box" onclick="play(11, 3)"></div>
+                    <div class="board-box" onclick="play(12, 3)"></div>
+                    <div class="board-box" onclick="play(13, 3)"></div>
+                    <div class="board-box" onclick="play(14, 3)"></div>
+                    <div class="board-box" onclick="play(0, 4)"></div>
+                    <div class="board-box" onclick="play(1, 4)"></div>
+                    <div class="board-box" onclick="play(2, 4)"></div>
+                    <div class="board-box" onclick="play(3, 4)"></div>
+                    <div class="board-box" onclick="play(4, 4)"></div>
+                    <div class="board-box" onclick="play(5, 4)"></div>
+                    <div class="board-box" onclick="play(6, 4)"></div>
+                    <div class="board-box" onclick="play(7, 4)"></div>
+                    <div class="board-box" onclick="play(8, 4)"></div>
+                    <div class="board-box" onclick="play(9, 4)"></div>
+                    <div class="board-box" onclick="play(10, 4)"></div>
+                    <div class="board-box" onclick="play(11, 4)"></div>
+                    <div class="board-box" onclick="play(12, 4)"></div>
+                    <div class="board-box" onclick="play(13, 4)"></div>
+                    <div class="board-box" onclick="play(14, 4)"></div>
+                    <div class="board-box" onclick="play(0, 5)"></div>
+                    <div class="board-box" onclick="play(1, 5)"></div>
+                    <div class="board-box" onclick="play(2, 5)"></div>
+                    <div class="board-box" onclick="play(3, 5)"></div>
+                    <div class="board-box" onclick="play(4, 5)"></div>
+                    <div class="board-box" onclick="play(5, 5)"></div>
+                    <div class="board-box" onclick="play(6, 5)"></div>
+                    <div class="board-box" onclick="play(7, 5)"></div>
+                    <div class="board-box" onclick="play(8, 5)"></div>
+                    <div class="board-box" onclick="play(9, 5)"></div>
+                    <div class="board-box" onclick="play(10, 5)"></div>
+                    <div class="board-box" onclick="play(11, 5)"></div>
+                    <div class="board-box" onclick="play(12, 5)"></div>
+                    <div class="board-box" onclick="play(13, 5)"></div>
+                    <div class="board-box" onclick="play(14, 5)"></div>
+                    <div class="board-box" onclick="play(0, 6)"></div>
+                    <div class="board-box" onclick="play(1, 6)"></div>
+                    <div class="board-box" onclick="play(2, 6)"></div>
+                    <div class="board-box" onclick="play(3, 6)"></div>
+                    <div class="board-box" onclick="play(4, 6)"></div>
+                    <div class="board-box" onclick="play(5, 6)"></div>
+                    <div class="board-box" onclick="play(6, 6)"></div>
+                    <div class="board-box" onclick="play(7, 6)"></div>
+                    <div class="board-box" onclick="play(8, 6)"></div>
+                    <div class="board-box" onclick="play(9, 6)"></div>
+                    <div class="board-box" onclick="play(10, 6)"></div>
+                    <div class="board-box" onclick="play(11, 6)"></div>
+                    <div class="board-box" onclick="play(12, 6)"></div>
+                    <div class="board-box" onclick="play(13, 6)"></div>
+                    <div class="board-box" onclick="play(14, 6)"></div>
+                    <div class="board-box" onclick="play(0, 7)"></div>
+                    <div class="board-box" onclick="play(1, 7)"></div>
+                    <div class="board-box" onclick="play(2, 7)"></div>
+                    <div class="board-box" onclick="play(3, 7)"></div>
+                    <div class="board-box" onclick="play(4, 7)"></div>
+                    <div class="board-box" onclick="play(5, 7)"></div>
+                    <div class="board-box" onclick="play(6, 7)"></div>
+                    <div class="board-box" onclick="play(7, 7)"></div>
+                    <div class="board-box" onclick="play(8, 7)"></div>
+                    <div class="board-box" onclick="play(9, 7)"></div>
+                    <div class="board-box" onclick="play(10, 7)"></div>
+                    <div class="board-box" onclick="play(11, 7)"></div>
+                    <div class="board-box" onclick="play(12, 7)"></div>
+                    <div class="board-box" onclick="play(13, 7)"></div>
+                    <div class="board-box" onclick="play(14, 7)"></div>
+                    <div class="board-box" onclick="play(0, 8)"></div>
+                    <div class="board-box" onclick="play(1, 8)"></div>
+                    <div class="board-box" onclick="play(2, 8)"></div>
+                    <div class="board-box" onclick="play(3, 8)"></div>
+                    <div class="board-box" onclick="play(4, 8)"></div>
+                    <div class="board-box" onclick="play(5, 8)"></div>
+                    <div class="board-box" onclick="play(6, 8)"></div>
+                    <div class="board-box" onclick="play(7, 8)"></div>
+                    <div class="board-box" onclick="play(8, 8)"></div>
+                    <div class="board-box" onclick="play(9, 8)"></div>
+                    <div class="board-box" onclick="play(10, 8)"></div>
+                    <div class="board-box" onclick="play(11, 8)"></div>
+                    <div class="board-box" onclick="play(12, 8)"></div>
+                    <div class="board-box" onclick="play(13, 8)"></div>
+                    <div class="board-box" onclick="play(14, 8)"></div>
+                    <div class="board-box" onclick="play(0, 9)"></div>
+                    <div class="board-box" onclick="play(1, 9)"></div>
+                    <div class="board-box" onclick="play(2, 9)"></div>
+                    <div class="board-box" onclick="play(3, 9)"></div>
+                    <div class="board-box" onclick="play(4, 9)"></div>
+                    <div class="board-box" onclick="play(5, 9)"></div>
+                    <div class="board-box" onclick="play(6, 9)"></div>
+                    <div class="board-box" onclick="play(7, 9)"></div>
+                    <div class="board-box" onclick="play(8, 9)"></div>
+                    <div class="board-box" onclick="play(9, 9)"></div>
+                    <div class="board-box" onclick="play(10, 9)"></div>
+                    <div class="board-box" onclick="play(11, 9)"></div>
+                    <div class="board-box" onclick="play(12, 9)"></div>
+                    <div class="board-box" onclick="play(13, 9)"></div>
+                    <div class="board-box" onclick="play(14, 9)"></div>
+                    <div class="board-box" onclick="play(0, 10)"></div>
+                    <div class="board-box" onclick="play(1, 10)"></div>
+                    <div class="board-box" onclick="play(2, 10)"></div>
+                    <div class="board-box" onclick="play(3, 10)"></div>
+                    <div class="board-box" onclick="play(4, 10)"></div>
+                    <div class="board-box" onclick="play(5, 10)"></div>
+                    <div class="board-box" onclick="play(6, 10)"></div>
+                    <div class="board-box" onclick="play(7, 10)"></div>
+                    <div class="board-box" onclick="play(8, 10)"></div>
+                    <div class="board-box" onclick="play(9, 10)"></div>
+                    <div class="board-box" onclick="play(10, 10)"></div>
+                    <div class="board-box" onclick="play(11, 10)"></div>
+                    <div class="board-box" onclick="play(12, 10)"></div>
+                    <div class="board-box" onclick="play(13, 10)"></div>
+                    <div class="board-box" onclick="play(14, 10)"></div>
+                    <div class="board-box" onclick="play(0, 11)"></div>
+                    <div class="board-box" onclick="play(1, 11)"></div>
+                    <div class="board-box" onclick="play(2, 11)"></div>
+                    <div class="board-box" onclick="play(3, 11)"></div>
+                    <div class="board-box" onclick="play(4, 11)"></div>
+                    <div class="board-box" onclick="play(5, 11)"></div>
+                    <div class="board-box" onclick="play(6, 11)"></div>
+                    <div class="board-box" onclick="play(7, 11)"></div>
+                    <div class="board-box" onclick="play(8, 11)"></div>
+                    <div class="board-box" onclick="play(9, 11)"></div>
+                    <div class="board-box" onclick="play(10, 11)"></div>
+                    <div class="board-box" onclick="play(11, 11)"></div>
+                    <div class="board-box" onclick="play(12, 11)"></div>
+                    <div class="board-box" onclick="play(13, 11)"></div>
+                    <div class="board-box" onclick="play(14, 11)"></div>
+                    <div class="board-box" onclick="play(0, 12)"></div>
+                    <div class="board-box" onclick="play(1, 12)"></div>
+                    <div class="board-box" onclick="play(2, 12)"></div>
+                    <div class="board-box" onclick="play(3, 12)"></div>
+                    <div class="board-box" onclick="play(4, 12)"></div>
+                    <div class="board-box" onclick="play(5, 12)"></div>
+                    <div class="board-box" onclick="play(6, 12)"></div>
+                    <div class="board-box" onclick="play(7, 12)"></div>
+                    <div class="board-box" onclick="play(8, 12)"></div>
+                    <div class="board-box" onclick="play(9, 12)"></div>
+                    <div class="board-box" onclick="play(10, 12)"></div>
+                    <div class="board-box" onclick="play(11, 12)"></div>
+                    <div class="board-box" onclick="play(12, 12)"></div>
+                    <div class="board-box" onclick="play(13, 12)"></div>
+                    <div class="board-box" onclick="play(14, 12)"></div>
+                    <div class="board-box" onclick="play(0, 13)"></div>
+                    <div class="board-box" onclick="play(1, 13)"></div>
+                    <div class="board-box" onclick="play(2, 13)"></div>
+                    <div class="board-box" onclick="play(3, 13)"></div>
+                    <div class="board-box" onclick="play(4, 13)"></div>
+                    <div class="board-box" onclick="play(5, 13)"></div>
+                    <div class="board-box" onclick="play(6, 13)"></div>
+                    <div class="board-box" onclick="play(7, 13)"></div>
+                    <div class="board-box" onclick="play(8, 13)"></div>
+                    <div class="board-box" onclick="play(9, 13)"></div>
+                    <div class="board-box" onclick="play(10, 13)"></div>
+                    <div class="board-box" onclick="play(11, 13)"></div>
+                    <div class="board-box" onclick="play(12, 13)"></div>
+                    <div class="board-box" onclick="play(13, 13)"></div>
+                    <div class="board-box" onclick="play(14, 13)"></div>
+                    <div class="board-box" onclick="play(0, 14)"></div>
+                    <div class="board-box" onclick="play(1, 14)"></div>
+                    <div class="board-box" onclick="play(2, 14)"></div>
+                    <div class="board-box" onclick="play(3, 14)"></div>
+                    <div class="board-box" onclick="play(4, 14)"></div>
+                    <div class="board-box" onclick="play(5, 14)"></div>
+                    <div class="board-box" onclick="play(6, 14)"></div>
+                    <div class="board-box" onclick="play(7, 14)"></div>
+                    <div class="board-box" onclick="play(8, 14)"></div>
+                    <div class="board-box" onclick="play(9, 14)"></div>
+                    <div class="board-box" onclick="play(10, 14)"></div>
+                    <div class="board-box" onclick="play(11, 14)"></div>
+                    <div class="board-box" onclick="play(12, 14)"></div>
+                    <div class="board-box" onclick="play(13, 14)"></div>
+                    <div class="board-box" onclick="play(14, 14)"></div>
                 </div>
-                <div class="board-box" onclick="play(0, 0)"></div>
-                <div class="board-box" onclick="play(1, 0)"></div>
-                <div class="board-box" onclick="play(2, 0)"></div>
-                <div class="board-box" onclick="play(3, 0)"></div>
-                <div class="board-box" onclick="play(4, 0)"></div>
-                <div class="board-box" onclick="play(5, 0)"></div>
-                <div class="board-box" onclick="play(6, 0)"></div>
-                <div class="board-box" onclick="play(7, 0)"></div>
-                <div class="board-box" onclick="play(8, 0)"></div>
-                <div class="board-box" onclick="play(9, 0)"></div>
-                <div class="board-box" onclick="play(10, 0)"></div>
-                <div class="board-box" onclick="play(11, 0)"></div>
-                <div class="board-box" onclick="play(12, 0)"></div>
-                <div class="board-box" onclick="play(13, 0)"></div>
-                <div class="board-box" onclick="play(14, 0)"></div>
-                <div class="board-box" onclick="play(0, 1)"></div>
-                <div class="board-box" onclick="play(1, 1)"></div>
-                <div class="board-box" onclick="play(2, 1)"></div>
-                <div class="board-box" onclick="play(3, 1)"></div>
-                <div class="board-box" onclick="play(4, 1)"></div>
-                <div class="board-box" onclick="play(5, 1)"></div>
-                <div class="board-box" onclick="play(6, 1)"></div>
-                <div class="board-box" onclick="play(7, 1)"></div>
-                <div class="board-box" onclick="play(8, 1)"></div>
-                <div class="board-box" onclick="play(9, 1)"></div>
-                <div class="board-box" onclick="play(10, 1)"></div>
-                <div class="board-box" onclick="play(11, 1)"></div>
-                <div class="board-box" onclick="play(12, 1)"></div>
-                <div class="board-box" onclick="play(13, 1)"></div>
-                <div class="board-box" onclick="play(14, 1)"></div>
-                <div class="board-box" onclick="play(0, 2)"></div>
-                <div class="board-box" onclick="play(1, 2)"></div>
-                <div class="board-box" onclick="play(2, 2)"></div>
-                <div class="board-box" onclick="play(3, 2)"></div>
-                <div class="board-box" onclick="play(4, 2)"></div>
-                <div class="board-box" onclick="play(5, 2)"></div>
-                <div class="board-box" onclick="play(6, 2)"></div>
-                <div class="board-box" onclick="play(7, 2)"></div>
-                <div class="board-box" onclick="play(8, 2)"></div>
-                <div class="board-box" onclick="play(9, 2)"></div>
-                <div class="board-box" onclick="play(10, 2)"></div>
-                <div class="board-box" onclick="play(11, 2)"></div>
-                <div class="board-box" onclick="play(12, 2)"></div>
-                <div class="board-box" onclick="play(13, 2)"></div>
-                <div class="board-box" onclick="play(14, 2)"></div>
-                <div class="board-box" onclick="play(0, 3)"></div>
-                <div class="board-box" onclick="play(1, 3)"></div>
-                <div class="board-box" onclick="play(2, 3)"></div>
-                <div class="board-box" onclick="play(3, 3)"></div>
-                <div class="board-box" onclick="play(4, 3)"></div>
-                <div class="board-box" onclick="play(5, 3)"></div>
-                <div class="board-box" onclick="play(6, 3)"></div>
-                <div class="board-box" onclick="play(7, 3)"></div>
-                <div class="board-box" onclick="play(8, 3)"></div>
-                <div class="board-box" onclick="play(9, 3)"></div>
-                <div class="board-box" onclick="play(10, 3)"></div>
-                <div class="board-box" onclick="play(11, 3)"></div>
-                <div class="board-box" onclick="play(12, 3)"></div>
-                <div class="board-box" onclick="play(13, 3)"></div>
-                <div class="board-box" onclick="play(14, 3)"></div>
-                <div class="board-box" onclick="play(0, 4)"></div>
-                <div class="board-box" onclick="play(1, 4)"></div>
-                <div class="board-box" onclick="play(2, 4)"></div>
-                <div class="board-box" onclick="play(3, 4)"></div>
-                <div class="board-box" onclick="play(4, 4)"></div>
-                <div class="board-box" onclick="play(5, 4)"></div>
-                <div class="board-box" onclick="play(6, 4)"></div>
-                <div class="board-box" onclick="play(7, 4)"></div>
-                <div class="board-box" onclick="play(8, 4)"></div>
-                <div class="board-box" onclick="play(9, 4)"></div>
-                <div class="board-box" onclick="play(10, 4)"></div>
-                <div class="board-box" onclick="play(11, 4)"></div>
-                <div class="board-box" onclick="play(12, 4)"></div>
-                <div class="board-box" onclick="play(13, 4)"></div>
-                <div class="board-box" onclick="play(14, 4)"></div>
-                <div class="board-box" onclick="play(0, 5)"></div>
-                <div class="board-box" onclick="play(1, 5)"></div>
-                <div class="board-box" onclick="play(2, 5)"></div>
-                <div class="board-box" onclick="play(3, 5)"></div>
-                <div class="board-box" onclick="play(4, 5)"></div>
-                <div class="board-box" onclick="play(5, 5)"></div>
-                <div class="board-box" onclick="play(6, 5)"></div>
-                <div class="board-box" onclick="play(7, 5)"></div>
-                <div class="board-box" onclick="play(8, 5)"></div>
-                <div class="board-box" onclick="play(9, 5)"></div>
-                <div class="board-box" onclick="play(10, 5)"></div>
-                <div class="board-box" onclick="play(11, 5)"></div>
-                <div class="board-box" onclick="play(12, 5)"></div>
-                <div class="board-box" onclick="play(13, 5)"></div>
-                <div class="board-box" onclick="play(14, 5)"></div>
-                <div class="board-box" onclick="play(0, 6)"></div>
-                <div class="board-box" onclick="play(1, 6)"></div>
-                <div class="board-box" onclick="play(2, 6)"></div>
-                <div class="board-box" onclick="play(3, 6)"></div>
-                <div class="board-box" onclick="play(4, 6)"></div>
-                <div class="board-box" onclick="play(5, 6)"></div>
-                <div class="board-box" onclick="play(6, 6)"></div>
-                <div class="board-box" onclick="play(7, 6)"></div>
-                <div class="board-box" onclick="play(8, 6)"></div>
-                <div class="board-box" onclick="play(9, 6)"></div>
-                <div class="board-box" onclick="play(10, 6)"></div>
-                <div class="board-box" onclick="play(11, 6)"></div>
-                <div class="board-box" onclick="play(12, 6)"></div>
-                <div class="board-box" onclick="play(13, 6)"></div>
-                <div class="board-box" onclick="play(14, 6)"></div>
-                <div class="board-box" onclick="play(0, 7)"></div>
-                <div class="board-box" onclick="play(1, 7)"></div>
-                <div class="board-box" onclick="play(2, 7)"></div>
-                <div class="board-box" onclick="play(3, 7)"></div>
-                <div class="board-box" onclick="play(4, 7)"></div>
-                <div class="board-box" onclick="play(5, 7)"></div>
-                <div class="board-box" onclick="play(6, 7)"></div>
-                <div class="board-box" onclick="play(7, 7)"></div>
-                <div class="board-box" onclick="play(8, 7)"></div>
-                <div class="board-box" onclick="play(9, 7)"></div>
-                <div class="board-box" onclick="play(10, 7)"></div>
-                <div class="board-box" onclick="play(11, 7)"></div>
-                <div class="board-box" onclick="play(12, 7)"></div>
-                <div class="board-box" onclick="play(13, 7)"></div>
-                <div class="board-box" onclick="play(14, 7)"></div>
-                <div class="board-box" onclick="play(0, 8)"></div>
-                <div class="board-box" onclick="play(1, 8)"></div>
-                <div class="board-box" onclick="play(2, 8)"></div>
-                <div class="board-box" onclick="play(3, 8)"></div>
-                <div class="board-box" onclick="play(4, 8)"></div>
-                <div class="board-box" onclick="play(5, 8)"></div>
-                <div class="board-box" onclick="play(6, 8)"></div>
-                <div class="board-box" onclick="play(7, 8)"></div>
-                <div class="board-box" onclick="play(8, 8)"></div>
-                <div class="board-box" onclick="play(9, 8)"></div>
-                <div class="board-box" onclick="play(10, 8)"></div>
-                <div class="board-box" onclick="play(11, 8)"></div>
-                <div class="board-box" onclick="play(12, 8)"></div>
-                <div class="board-box" onclick="play(13, 8)"></div>
-                <div class="board-box" onclick="play(14, 8)"></div>
-                <div class="board-box" onclick="play(0, 9)"></div>
-                <div class="board-box" onclick="play(1, 9)"></div>
-                <div class="board-box" onclick="play(2, 9)"></div>
-                <div class="board-box" onclick="play(3, 9)"></div>
-                <div class="board-box" onclick="play(4, 9)"></div>
-                <div class="board-box" onclick="play(5, 9)"></div>
-                <div class="board-box" onclick="play(6, 9)"></div>
-                <div class="board-box" onclick="play(7, 9)"></div>
-                <div class="board-box" onclick="play(8, 9)"></div>
-                <div class="board-box" onclick="play(9, 9)"></div>
-                <div class="board-box" onclick="play(10, 9)"></div>
-                <div class="board-box" onclick="play(11, 9)"></div>
-                <div class="board-box" onclick="play(12, 9)"></div>
-                <div class="board-box" onclick="play(13, 9)"></div>
-                <div class="board-box" onclick="play(14, 9)"></div>
-                <div class="board-box" onclick="play(0, 10)"></div>
-                <div class="board-box" onclick="play(1, 10)"></div>
-                <div class="board-box" onclick="play(2, 10)"></div>
-                <div class="board-box" onclick="play(3, 10)"></div>
-                <div class="board-box" onclick="play(4, 10)"></div>
-                <div class="board-box" onclick="play(5, 10)"></div>
-                <div class="board-box" onclick="play(6, 10)"></div>
-                <div class="board-box" onclick="play(7, 10)"></div>
-                <div class="board-box" onclick="play(8, 10)"></div>
-                <div class="board-box" onclick="play(9, 10)"></div>
-                <div class="board-box" onclick="play(10, 10)"></div>
-                <div class="board-box" onclick="play(11, 10)"></div>
-                <div class="board-box" onclick="play(12, 10)"></div>
-                <div class="board-box" onclick="play(13, 10)"></div>
-                <div class="board-box" onclick="play(14, 10)"></div>
-                <div class="board-box" onclick="play(0, 11)"></div>
-                <div class="board-box" onclick="play(1, 11)"></div>
-                <div class="board-box" onclick="play(2, 11)"></div>
-                <div class="board-box" onclick="play(3, 11)"></div>
-                <div class="board-box" onclick="play(4, 11)"></div>
-                <div class="board-box" onclick="play(5, 11)"></div>
-                <div class="board-box" onclick="play(6, 11)"></div>
-                <div class="board-box" onclick="play(7, 11)"></div>
-                <div class="board-box" onclick="play(8, 11)"></div>
-                <div class="board-box" onclick="play(9, 11)"></div>
-                <div class="board-box" onclick="play(10, 11)"></div>
-                <div class="board-box" onclick="play(11, 11)"></div>
-                <div class="board-box" onclick="play(12, 11)"></div>
-                <div class="board-box" onclick="play(13, 11)"></div>
-                <div class="board-box" onclick="play(14, 11)"></div>
-                <div class="board-box" onclick="play(0, 12)"></div>
-                <div class="board-box" onclick="play(1, 12)"></div>
-                <div class="board-box" onclick="play(2, 12)"></div>
-                <div class="board-box" onclick="play(3, 12)"></div>
-                <div class="board-box" onclick="play(4, 12)"></div>
-                <div class="board-box" onclick="play(5, 12)"></div>
-                <div class="board-box" onclick="play(6, 12)"></div>
-                <div class="board-box" onclick="play(7, 12)"></div>
-                <div class="board-box" onclick="play(8, 12)"></div>
-                <div class="board-box" onclick="play(9, 12)"></div>
-                <div class="board-box" onclick="play(10, 12)"></div>
-                <div class="board-box" onclick="play(11, 12)"></div>
-                <div class="board-box" onclick="play(12, 12)"></div>
-                <div class="board-box" onclick="play(13, 12)"></div>
-                <div class="board-box" onclick="play(14, 12)"></div>
-                <div class="board-box" onclick="play(0, 13)"></div>
-                <div class="board-box" onclick="play(1, 13)"></div>
-                <div class="board-box" onclick="play(2, 13)"></div>
-                <div class="board-box" onclick="play(3, 13)"></div>
-                <div class="board-box" onclick="play(4, 13)"></div>
-                <div class="board-box" onclick="play(5, 13)"></div>
-                <div class="board-box" onclick="play(6, 13)"></div>
-                <div class="board-box" onclick="play(7, 13)"></div>
-                <div class="board-box" onclick="play(8, 13)"></div>
-                <div class="board-box" onclick="play(9, 13)"></div>
-                <div class="board-box" onclick="play(10, 13)"></div>
-                <div class="board-box" onclick="play(11, 13)"></div>
-                <div class="board-box" onclick="play(12, 13)"></div>
-                <div class="board-box" onclick="play(13, 13)"></div>
-                <div class="board-box" onclick="play(14, 13)"></div>
-                <div class="board-box" onclick="play(0, 14)"></div>
-                <div class="board-box" onclick="play(1, 14)"></div>
-                <div class="board-box" onclick="play(2, 14)"></div>
-                <div class="board-box" onclick="play(3, 14)"></div>
-                <div class="board-box" onclick="play(4, 14)"></div>
-                <div class="board-box" onclick="play(5, 14)"></div>
-                <div class="board-box" onclick="play(6, 14)"></div>
-                <div class="board-box" onclick="play(7, 14)"></div>
-                <div class="board-box" onclick="play(8, 14)"></div>
-                <div class="board-box" onclick="play(9, 14)"></div>
-                <div class="board-box" onclick="play(10, 14)"></div>
-                <div class="board-box" onclick="play(11, 14)"></div>
-                <div class="board-box" onclick="play(12, 14)"></div>
-                <div class="board-box" onclick="play(13, 14)"></div>
-                <div class="board-box" onclick="play(14, 14)"></div>
+            </div>
+            <div class="w-44 min-w-44 mr-7">
+                <h1 class="text-xl text-blue font-bold">Vyhráváš? Tak nám to přijď předvést na pIšQworky!</h1>
+                <br>
+                <p class="text-black text-base">Letos už po <span id="xo-year"></span>. organizujeme mistroství škol Česka a Slovenska v této logické hře. Přihlásit se můžeš společně se svým týmem, nebo bojovat sám za sebe v kategorii jednotlivců.</p>
+                <br>
+                <p class="text-black text-base font-bold">Chceš vědět víc? Koukni na náš web <span class="text-lg text-red">pisqworky.cz</span>, budeme se těšit:</p>
             </div>
         </div>
-        <img src="assets/img/qr_code_dark.svg" class="absolute right-0 bottom-0 m-10 size-56">
+        <img src="assets/img/qr_code_dark.svg" class="absolute right-0 bottom-0 mr-7 mb-10 size-44">
     </div>
 </body>
 </html>
