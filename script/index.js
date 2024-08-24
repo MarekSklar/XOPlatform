@@ -1,5 +1,5 @@
 const year = new Date().getFullYear();
-document.querySelector("#xo-year").textContent = `${(year.toString().slice(-2) - 8).toString().padStart(2, '0')}`;
+if (document.querySelector("#xo-year") !== null) document.querySelector("#xo-year").textContent = `${(year.toString().slice(-2) - 8).toString().padStart(2, '0')}`;
 
 const playerType = {
     x: true,

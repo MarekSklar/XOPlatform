@@ -70,4 +70,8 @@
         transform: rotate(15deg);
         opacity: 1;
     }
+
+    .highlight {
+        @apply text-lg text-red;
+    }
 }
