@@ -7,7 +7,7 @@ const playerType = {
 };
 
 let player = playerType.x;
-let table = Array.from({ length: 15 }, () => Array(15).fill(null));
+let board = Array.from({ length: 15 }, () => Array(15).fill(null));
 
 let recoredPlays = [];
 let playingRecord = false;
@@ -35,7 +35,7 @@ function clearGameWithoutPlayRecords() {
     }
 
     // clear 2D array
-    table = Array.from({ length: 15 }, () => Array(15).fill(null));
+    board = Array.from({ length: 15 }, () => Array(15).fill(null));
 
     // reset player
     player = playerType.x;
@@ -59,6 +59,9 @@ function clearGame() {
 
     // clear recorded plays
     recoredPlays = [];
+
+    // clear playing record
+    playingRecord = false;
 }
 
 function play(x, y, recorded = false) {
@@ -69,7 +72,7 @@ function play(x, y, recorded = false) {
 }
 
 function placeSymbol(x, y) {
-    if (table[x][y] !== null) return "full";
+    if (board[x][y] !== null) return "full";
 
     // place in element
     const linearCoords = 15*y + x;
@@ -90,7 +93,7 @@ function placeSymbol(x, y) {
     document.querySelectorAll('.board-box')[linearCoords].classList.add(player ? "bg-blue/20" : "bg-red/20");
 
     // place in 2D array
-    table[x][y] = player;
+    board[x][y] = player;
 
     // record play
     if (!playingRecord) recoredPlays.push({x, y});
@@ -98,10 +101,10 @@ function placeSymbol(x, y) {
 
 function checkWin(x, y) {
     const winStar = [
-        [table[x]?.[y-4] ?? null, table[x]?.[y-3] ?? null, table[x]?.[y-2] ?? null, table[x]?.[y-1] ?? null, table[x]?.[y] ?? null, table[x]?.[y+1] ?? null, table[x]?.[y+2] ?? null, table[x]?.[y+3] ?? null, table[x]?.[y+4] ?? null],
-        [table[x-4]?.[y] ?? null, table[x-3]?.[y] ?? null, table[x-2]?.[y] ?? null, table[x-1]?.[y] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y] ?? null, table[x+2]?.[y] ?? null, table[x+3]?.[y] ?? null, table[x+4]?.[y] ?? null],
-        [table[x-4]?.[y-4] ?? null, table[x-3]?.[y-3] ?? null, table[x-2]?.[y-2] ?? null, table[x-1]?.[y-1] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y+1] ?? null, table[x+2]?.[y+2] ?? null, table[x+3]?.[y+3] ?? null, table[x+4]?.[y+4] ?? null],
-        [table[x-4]?.[y+4] ?? null, table[x-3]?.[y+3] ?? null, table[x-2]?.[y+2] ?? null, table[x-1]?.[y+1] ?? null, table[x]?.[y] ?? null, table[x+1]?.[y-1] ?? null, table[x+2]?.[y-2] ?? null, table[x+3]?.[y-3] ?? null, table[x+4]?.[y-4] ?? null]
+        [board[x]?.[y-4] ?? null, board[x]?.[y-3] ?? null, board[x]?.[y-2] ?? null, board[x]?.[y-1] ?? null, board[x]?.[y] ?? null, board[x]?.[y+1] ?? null, board[x]?.[y+2] ?? null, board[x]?.[y+3] ?? null, board[x]?.[y+4] ?? null],
+        [board[x-4]?.[y] ?? null, board[x-3]?.[y] ?? null, board[x-2]?.[y] ?? null, board[x-1]?.[y] ?? null, board[x]?.[y] ?? null, board[x+1]?.[y] ?? null, board[x+2]?.[y] ?? null, board[x+3]?.[y] ?? null, board[x+4]?.[y] ?? null],
+        [board[x-4]?.[y-4] ?? null, board[x-3]?.[y-3] ?? null, board[x-2]?.[y-2] ?? null, board[x-1]?.[y-1] ?? null, board[x]?.[y] ?? null, board[x+1]?.[y+1] ?? null, board[x+2]?.[y+2] ?? null, board[x+3]?.[y+3] ?? null, board[x+4]?.[y+4] ?? null],
+        [board[x-4]?.[y+4] ?? null, board[x-3]?.[y+3] ?? null, board[x-2]?.[y+2] ?? null, board[x-1]?.[y+1] ?? null, board[x]?.[y] ?? null, board[x+1]?.[y-1] ?? null, board[x+2]?.[y-2] ?? null, board[x+3]?.[y-3] ?? null, board[x+4]?.[y-4] ?? null]
     ];    
 
     let winValue = 0;
