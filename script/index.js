@@ -12,6 +12,8 @@ let board = Array.from({ length: 15 }, () => Array(15).fill(null));
 let recoredPlays = [];
 let playingRecord = false;
 
+let playRecordInterval;
+
 function startGame() {
     document.querySelector("#menu").classList.add("hidden");
     document.querySelector("#game").classList.remove("hidden");
@@ -62,6 +64,9 @@ function clearGame() {
 
     // clear playing record
     playingRecord = false;
+
+    // clear play record interval
+    clearInterval(playRecordInterval);
 }
 
 function play(x, y, recorded = false) {
@@ -148,7 +153,7 @@ function playGameRecord() {
     const moveCount = recoredPlays.length - 1;
     let i = 0;
 
-    const playRecordInterval = setInterval(() => {
+    playRecordInterval = setInterval(() => {
         console.log(i, recoredPlays.length);
         
         playedMove = recoredPlays[i];
