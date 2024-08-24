@@ -41,9 +41,13 @@ const config = {
             cs: "Kolečko vyhrálo",
             sk: "10"
         },
+        gameWinRecordButton: {
+            cs: "Přehrání hry",
+            sk: "11"
+        },
         gameWinButton: {
             cs: "Nová hra",
-            sk: "11"
+            sk: "12"
         }
     }
 }

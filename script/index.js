@@ -9,6 +9,9 @@ const playerType = {
 let player = playerType.x;
 let table = Array.from({ length: 15 }, () => Array(15).fill(null));
 
+let recoredPlays = [];
+let playingRecord = false;
+
 function startGame() {
     document.querySelector("#menu").classList.add("hidden");
     document.querySelector("#game").classList.remove("hidden");
@@ -23,7 +26,7 @@ function endGame() {
     document.querySelector("#game").classList.add("flex");
 }
 
-function clearGame() {
+function clearGameWithoutPlayRecords() {
     // clear element
     const boardBoxes = document.querySelectorAll('.board-box');
     for (let i = 0; i < boardBoxes.length; i++) {
@@ -51,8 +54,15 @@ function clearGame() {
     document.querySelector("#win-popup-o").classList.remove("flex");
 }
 
-function play(x, y) {
-    if (placeSymbol(x, y) === "full") return;
+function clearGame() {
+    clearGameWithoutPlayRecords();
+
+    // clear recorded plays
+    recoredPlays = [];
+}
+
+function play(x, y, recorded = false) {
+    if (placeSymbol(x, y) === "full" || (playingRecord && !recorded)) return;
     if (checkWin(x, y)) activateWin();
     else togglePlayer();
 }
@@ -80,6 +90,9 @@ function placeSymbol(x, y) {
 
     // place in 2D array
     table[x][y] = player;
+
+    // record play
+    if (!playingRecord) recoredPlays.push({x, y});
 }
 
 function checkWin(x, y) {
@@ -120,4 +133,32 @@ function activateWin() {
 
 function togglePlayer() {
     player = !player;
+}
+
+function playGameRecord() {
+    playingRecord = true;
+    console.log(recoredPlays);
+    
+
+    clearGameWithoutPlayRecords();
+    const moveCount = recoredPlays.length - 1;
+    let i = 0;
+
+    const playRecordInterval = setInterval(() => {
+        console.log(i, recoredPlays.length);
+        
+        playedMove = recoredPlays[i];
+
+        const x = playedMove.x;
+        const y = playedMove.y;
+        play(x, y, true);
+
+        if (i === moveCount) {
+            clearInterval(playRecordInterval);
+            playingRecord = false;
+            console.log(recoredPlays);
+        }
+
+        i++;
+    }, 400);
 }

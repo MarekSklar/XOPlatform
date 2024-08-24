@@ -42,7 +42,10 @@
                         <div class="relative p-5 text-center bg-white rounded-md win-back win-back-x">
                             <div>
                                 <p text="gameWinCross" class="text-black font-bold">Křížek vyhrál</p>
-                                <button text="gameWinButton" onclick="clearGame()" class="bg-white/0 text-blue">Nová hra</button>
+                                <div class="flex flex-col items-center gap-4 w-48 py-7 mx-20">
+                                    <button text="gameWinButton" onclick="clearGame()" class="w-full px-4 py-2 bg-blue text-white">Nová hra</button>
+                                    <button text="gameWinRecordButton" onclick="playGameRecord()" class="w-full py-0 text-blue">Přehrání hry</button>
+                                </div>
                             </div>
                             <div class="absolute">
                                 <img src="assets/img/x.svg">
@@ -54,7 +57,10 @@
                         <div class="relative p-5 text-center bg-white rounded-md win-back win-back-o">
                             <div>
                                 <p text="gameWinCircle" class="text-black font-bold">Kolečko vyhrálo</p>
-                                <button text="gameWinButton" onclick="clearGame()" class="bg-white/0 text-red">Nová hra</button>
+                                <div class="flex flex-col items-center gap-4 w-48 py-7 mx-20">
+                                    <button text="gameWinButton" onclick="clearGame()" class="w-full px-4 py-2 bg-darkRed text-white">Nová hra</button>
+                                    <button text="gameWinRecordButton" onclick="playGameRecord()" class="w-fit py-0 text-darkRed">Přehrání hry</button>
+                                </div>
                             </div>
                             <div class="absolute">
                                 <img src="assets/img/x.svg">

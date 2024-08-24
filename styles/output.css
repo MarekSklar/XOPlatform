@@ -548,6 +548,13 @@ button {
   opacity: 1;
 }
 
+.highlight {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(227 24 55 / var(--tw-text-opacity));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -676,6 +683,11 @@ button {
   margin: 2.5rem;
 }
 
+.mx-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -747,8 +759,17 @@ button {
   width: 11rem;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .w-6\/12 {
   width: 50%;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .w-full {
@@ -803,6 +824,10 @@ button {
   gap: 1.75rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -812,37 +837,22 @@ button {
   background-color: rgb(8 72 134 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-white\/0 {
-  background-color: rgb(255 255 255 / 0);
-}
-
 .bg-blue\/20 {
   background-color: rgb(8 72 134 / 0.2);
+}
+
+.bg-darkRed {
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 10 40 / var(--tw-bg-opacity));
 }
 
 .bg-red\/20 {
   background-color: rgb(227 24 55 / 0.2);
 }
 
-.bg-blue\/30 {
-  background-color: rgb(8 72 134 / 0.3);
-}
-
-.bg-red\/30 {
-  background-color: rgb(227 24 55 / 0.3);
-}
-
-.bg-gray\/30 {
-  background-color: rgb(179 178 178 / 0.3);
-}
-
-.bg-gray\/50 {
-  background-color: rgb(179 178 178 / 0.5);
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(closest-side\2c _var\(--tw-gradient-stops\)\)\] {
@@ -878,6 +888,36 @@ button {
   padding-right: 3rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -890,11 +930,6 @@ button {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-xl {
@@ -916,9 +951,14 @@ button {
   color: rgb(8 72 134 / var(--tw-text-opacity));
 }
 
-.text-red {
+.text-darkRed {
   --tw-text-opacity: 1;
-  color: rgb(227 24 55 / var(--tw-text-opacity));
+  color: rgb(206 10 40 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @font-face {
