@@ -62,7 +62,8 @@ function clearGame() {
 }
 
 function play(x, y, recorded = false) {
-    if (placeSymbol(x, y) === "full" || (playingRecord && !recorded)) return;
+    if (playingRecord && !recorded) return;
+    if (placeSymbol(x, y) === "full") return;
     if (checkWin(x, y)) activateWin();
     else togglePlayer();
 }
