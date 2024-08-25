@@ -489,6 +489,16 @@ button {
   aspect-ratio: 1 / 1;
   max-height: 83vh;
   max-width: 100%;
+}
+
+.\!board {
+  display: grid;
+  aspect-ratio: 1 / 1;
+  max-height: 83vh;
+  max-width: 100%;
+}
+
+.board {
   grid-template-columns: repeat(15, minmax(0, 1fr));
   background-image: url("../assets/img/board_background.svg");
   .board-box {
@@ -517,6 +527,35 @@ button {
   }
 }
 
+.\!board {
+  grid-template-columns: repeat(15, minmax(0, 1fr)) !important;
+  background-image: url("../assets/img/board_background.svg") !important;
+   {
+    display: flex;
+  }
+   {
+    aspect-ratio: 1 / 1;
+  }
+   {
+    width: -webkit-fill-available;
+  }
+   {
+    cursor: pointer;
+  }
+   {
+    align-items: center;
+  }
+   {
+    justify-content: center;
+  }
+   {
+     {
+      width: 83.333333%;
+      height: 83.333333%;
+    }
+  }
+}
+
 .win-back {
   position: absolute;
   overflow: hidden;
@@ -532,7 +571,6 @@ button {
   z-index: 1;
   background: url("../assets/img/x.svg") 0 0 no-repeat;
   transform: rotate(15deg);
-  opacity: 1;
 }
 
 .win-back-o::before {
@@ -545,7 +583,19 @@ button {
   z-index: 1;
   background: url("../assets/img/o.svg") 0 0 no-repeat;
   transform: rotate(15deg);
-  opacity: 1;
+}
+
+.win-back-draw::before {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  content: "";
+  z-index: 1;
+  background: url("../assets/img/x.svg") 0 0 no-repeat;
+  transform: rotate(15deg);
+  bottom: -35px;
+  right: -45px;
+  filter: grayscale(100%);
 }
 
 .highlight {
@@ -688,12 +738,12 @@ button {
   margin-right: 5rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .mb-7 {
   margin-bottom: 1.75rem;
+}
+
+.mb-\[3\.4rem\] {
+  margin-bottom: 3.4rem;
 }
 
 .ml-7 {
@@ -710,22 +760,6 @@ button {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-14 {
-  margin-bottom: 3.5rem;
-}
-
-.mb-\[13rem\] {
-  margin-bottom: 13rem;
-}
-
-.mb-\[3\.3rem\] {
-  margin-bottom: 3.3rem;
-}
-
-.mb-\[3\.4rem\] {
-  margin-bottom: 3.4rem;
 }
 
 .flex {
@@ -853,6 +887,11 @@ button {
   background-color: rgb(8 72 134 / 0.2);
 }
 
+.bg-darkGray {
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 66 66 / var(--tw-bg-opacity));
+}
+
 .bg-darkRed {
   --tw-bg-opacity: 1;
   background-color: rgb(206 10 40 / var(--tw-bg-opacity));
@@ -877,9 +916,21 @@ button {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-darkGray\/70 {
+  --tw-gradient-from: rgb(66 66 66 / 0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(66 66 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .from-red\/40 {
   --tw-gradient-from: rgb(227 24 55 / 0.4) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(227 24 55 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-darkGray\/40 {
+  --tw-gradient-from: rgb(66 66 66 / 0.4) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(66 66 66 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -956,6 +1007,11 @@ button {
 .text-blue {
   --tw-text-opacity: 1;
   color: rgb(8 72 134 / var(--tw-text-opacity));
+}
+
+.text-darkGray {
+  --tw-text-opacity: 1;
+  color: rgb(66 66 66 / var(--tw-text-opacity));
 }
 
 .text-darkRed {

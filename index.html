@@ -48,10 +48,6 @@
                                     <button text="gameWinRecordButton" onclick="playGameRecord()" class="w-full py-0 text-blue">Přehrání hry</button>
                                 </div>
                             </div>
-                            <div class="absolute">
-                                <img src="assets/img/x.svg">
-                                <img src="assets/img/o.svg">
-                            </div>
                         </div>
                     </div>
                     <div id="win-popup-o" class="win-popup absolute items-center justify-center hidden size-full bg-[radial-gradient(closest-side,_var(--tw-gradient-stops))] from-red/40 to-red/0">
@@ -63,9 +59,16 @@
                                     <button text="gameWinRecordButton" onclick="playGameRecord()" class="w-fit py-0 text-darkRed">Přehrání hry</button>
                                 </div>
                             </div>
-                            <div class="absolute">
-                                <img src="assets/img/x.svg">
-                                <img src="assets/img/o.svg">
+                        </div>
+                    </div>
+                    <div id="win-popup-draw" class="win-popup absolute items-center justify-center hidden size-full bg-[radial-gradient(closest-side,_var(--tw-gradient-stops))] from-darkGray/40 to-red/0">
+                        <div class="relative px-5 py-8 text-center bg-white rounded-md win-back win-back-draw">
+                            <div>
+                                <p text="gameWinDraw" class="text-black font-bold">Remíza</p>
+                                <div class="flex flex-col items-center gap-3 w-48 pt-6 mx-20">
+                                    <button text="gameWinButton" onclick="clearGame()" class="w-full px-4 py-2 bg-darkGray text-white">Nová hra</button>
+                                    <button text="gameWinRecordButton" onclick="playGameRecord()" class="w-fit py-0 text-darkGray">Přehrání hry</button>
+                                </div>
                             </div>
                         </div>
                     </div>

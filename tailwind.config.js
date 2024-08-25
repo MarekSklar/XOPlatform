@@ -9,6 +9,7 @@ module.exports = {
             darkRed: "#ce0a28",
             white: "#fff",
             gray: "#B3B2B2",
+            darkGray: "#424242",
             black: "#000"
         },
         fontFamily: {

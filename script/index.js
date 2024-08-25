@@ -14,6 +14,8 @@ let playingRecord = false;
 
 let playRecordInterval;
 
+let startGameTime;
+
 function startGame() {
     document.querySelector("#menu").classList.add("hidden");
     document.querySelector("#game").classList.remove("hidden");
@@ -49,11 +51,16 @@ function clearGameWithoutPlayRecords() {
         boardBox.classList.remove("bg-blue/20");
     }
 
+    // reset timer
+    startGameTime = new Date().getTime();
+
     // hide win popup
     document.querySelector("#win-popup-x").classList.add("hidden");
     document.querySelector("#win-popup-o").classList.add("hidden");
+    document.querySelector("#win-popup-draw").classList.add("hidden");
     document.querySelector("#win-popup-x").classList.remove("flex");
     document.querySelector("#win-popup-o").classList.remove("flex");
+    document.querySelector("#win-popup-draw").classList.remove("flex");
 }
 
 function clearGame() {
@@ -73,6 +80,7 @@ function play(x, y, recorded = false) {
     if (playingRecord && !recorded) return;
     if (placeSymbol(x, y) === "full") return;
     if (checkWin(x, y)) activateWin();
+    if (!board.flat().includes(null)) activateDraw();
     else togglePlayer();
 }
 
@@ -139,14 +147,25 @@ function activateWin() {
         document.querySelector("#win-popup-o").classList.add("flex");
     }
     
-    // send analytics
+    sendAnalytics();
+}
+
+function activateDraw() {
+    document.querySelector("#win-popup-draw").classList.remove("hidden");
+    document.querySelector("#win-popup-draw").classList.add("flex");
+
+    sendAnalytics();
+}
+
+function sendAnalytics() {
     if (!playingRecord) {
         sendData({
             language: config.selectedLanguage,
-            winner: player ? "x" : "o",
+            winner: (!board.flat().includes(null)) ? "draw" : (player ? "x" : "o"),
             moves: recoredMoves,
             movesCount: recoredMoves.length,
-            board
+            board,
+            duration: new Date().getTime() - startGameTime
         });
     }
 }

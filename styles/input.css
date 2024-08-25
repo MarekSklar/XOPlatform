@@ -57,7 +57,6 @@
         z-index: 1;
         background: url("../assets/img/x.svg") 0 0 no-repeat;
         transform: rotate(15deg);
-        opacity: 1;
     }
 
     .win-back-o::before {
@@ -68,7 +67,19 @@
         z-index: 1;
         background: url("../assets/img/o.svg") 0 0 no-repeat;
         transform: rotate(15deg);
-        opacity: 1;
+    }
+
+    .win-back-draw::before {
+        @apply absolute size-32;
+        content: "";
+        bottom: -35px;
+        right: -45px;
+        z-index: 1;
+        background: url("../assets/img/x.svg") 0 0 no-repeat;
+        transform: rotate(15deg);
+        bottom: -35px;
+        right: -45px;
+        filter: grayscale(100%);
     }
 
     .highlight {
