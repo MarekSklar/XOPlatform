@@ -9,7 +9,7 @@ const playerType = {
 let player = playerType.x;
 let board = Array.from({ length: 15 }, () => Array(15).fill(null));
 
-let recoredPlays = [];
+let recoredMoves = [];
 let playingRecord = false;
 
 let playRecordInterval;
@@ -60,7 +60,7 @@ function clearGame() {
     clearGameWithoutPlayRecords();
 
     // clear recorded plays
-    recoredPlays = [];
+    recoredMoves = [];
 
     // clear playing record
     playingRecord = false;
@@ -101,7 +101,7 @@ function placeSymbol(x, y) {
     board[x][y] = player;
 
     // record play
-    if (!playingRecord) recoredPlays.push({x, y});
+    if (!playingRecord) recoredMoves.push({x, y});
 }
 
 function checkWin(x, y) {
@@ -138,6 +138,17 @@ function activateWin() {
         document.querySelector("#win-popup-o").classList.remove("hidden");
         document.querySelector("#win-popup-o").classList.add("flex");
     }
+    
+    // send analytics
+    if (!playingRecord) {
+        sendData({
+            language: config.selectedLanguage,
+            winner: player ? "x" : "o",
+            moves: recoredMoves,
+            movesCount: recoredMoves.length,
+            board
+        });
+    }
 }
 
 function togglePlayer() {
@@ -146,17 +157,14 @@ function togglePlayer() {
 
 function playGameRecord() {
     playingRecord = true;
-    console.log(recoredPlays);
-    
 
     clearGameWithoutPlayRecords();
-    const moveCount = recoredPlays.length - 1;
+    const moveCount = recoredMoves.length - 1;
     let i = 0;
 
     playRecordInterval = setInterval(() => {
-        console.log(i, recoredPlays.length);
         
-        playedMove = recoredPlays[i];
+        playedMove = recoredMoves[i];
 
         const x = playedMove.x;
         const y = playedMove.y;
@@ -165,7 +173,6 @@ function playGameRecord() {
         if (i === moveCount) {
             clearInterval(playRecordInterval);
             playingRecord = false;
-            console.log(recoredPlays);
         }
 
         i++;
