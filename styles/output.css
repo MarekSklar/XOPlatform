@@ -762,6 +762,22 @@ button {
   margin-top: 2rem;
 }
 
+.mb-\[3\.1rem\] {
+  margin-bottom: 3.1rem;
+}
+
+.mb-\[3rem\] {
+  margin-bottom: 3rem;
+}
+
+.mb-\[2\.9rem\] {
+  margin-bottom: 2.9rem;
+}
+
+.mb-\[2\.95rem\] {
+  margin-bottom: 2.95rem;
+}
+
 .flex {
   display: flex;
 }
