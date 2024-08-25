@@ -160,12 +160,14 @@ function activateDraw() {
 function sendAnalytics() {
     if (!playingRecord) {
         sendData({
-            language: config.selectedLanguage,
-            winner: (!board.flat().includes(null)) ? "draw" : (player ? "x" : "o"),
-            moves: recoredMoves,
-            movesCount: recoredMoves.length,
-            board,
-            duration: new Date().getTime() - startGameTime
+            data: {
+                language: config.selectedLanguage,
+                winner: (!board.flat().includes(null)) ? "draw" : (player ? "x" : "o"),
+                moves: recoredMoves,
+                movesCount: recoredMoves.length,
+                board,
+                duration: new Date().getTime() - startGameTime
+            }
         });
     }
 }
