@@ -3,55 +3,55 @@ const config = {
     text: {
         menuText1: {
             cs: "Umíš to s křížky a kolečky?",
-            sk: "1"
+            sk: "Vieš to s krížikmi a kolieskami?"
         },
         menuText2: {
             cs: "Tak se předveď. Pět v řadě vyhrává.",
-            sk: "2"
+            sk: "Tak sa predveď. Päť v rade vyhráva."
         },
         menuBackToGameButton: {
             cs: "Vrátit do hry",
-            sk: "3"
+            sk: "Vrátiť do hry"
         },
         menuNewGameButton: {
             cs: "Nová hra",
-            sk: "4"
+            sk: "Nová hra"
         },
         gameMenuButton: {
             cs: "Menu",
-            sk: "5"
+            sk: "Menu"
         },
         gameCTATitle: {
             cs: "Vyhráváš? Tak nám to přijď předvést na pIšQworky!",
-            sk: "6"
+            sk: "Vyhrávaš? Tak nám to príď predviesť na pIšQworky!"
         },
         gameCTADescription: {
             cs: "Letos už po <span id='xo-year'></span>. organizujeme mistrovství škol Česka a Slovenska v této logické hře. Přihlásit se můžeš společně se svým týmem, nebo bojovat sám za sebe v kategorii jednotlivců.",
-            sk: "7"
+            sk: "Tento rok organizujeme už <span id='xo-year'></span>. majstrovstvá škôl Česka a Slovenska v tejto logickej hre. Prihlásiť sa môžeš spoločne so svojim tímom, alebo bojovať sám za seba v kategórii jednotlivcov."
         },
         gameCTAText: {
             cs: "Chceš vědět víc? Koukni na náš web <span class='highlight'>pisqworky.cz</span>, budeme se těšit:",
-            sk: "8"
+            sk: "Chceš vedieť viac? Pozri na náš web <span class='highlight'>pisqworky.sk</span>, budeme sa tešiť:",
         },
         gameWinCross: {
             cs: "Křížek vyhrál",
-            sk: "9"
+            sk: "Krížik vyhral"
         },
         gameWinCircle: {
             cs: "Kolečko vyhrálo",
-            sk: "10"
+            sk: "Koliesko vyhralo",
         },
         gameWinDraw: {
             cs: "Remíza",
-            sk: "11"
+            sk: "Remíza"
         },
         gameWinRecordButton: {
             cs: "Přehrání hry",
-            sk: "12"
+            sk: "Prehranie hry"
         },
         gameWinButton: {
             cs: "Nová hra",
-            sk: "13"
+            sk: "Nová hra"
         }
     }
 }
