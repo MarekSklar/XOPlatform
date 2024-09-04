@@ -25,7 +25,7 @@
                 <button text="menuNewGameButton" onclick="startGame(); clearGame()">Nová hra</button>
             </div>
         </div>
-        <img src="assets/img/qr_code_light.svg" class="absolute right-0 bottom-0 m-10 size-56">
+        <img text="menuQRImageSrc" src="assets/img/cs/qr_code_light.svg" class="absolute right-0 bottom-0 m-10 size-56">
     </div>
     <!-- game -->
     <div id="game" class="hidden min-h-[100dvh] flex-col">
@@ -304,10 +304,16 @@
                 <br>
                 <p text="gameCTADescription" class="text-black text-base">Letos už po <span id="xo-year"></span>. organizujeme mistrovství škol Česka a Slovenska v této logické hře. Přihlásit se můžeš společně se svým týmem, nebo bojovat sám za sebe v kategorii jednotlivců.</p>
                 <br>
-                <p text="gameCTAText" class="text-black text-base font-bold">Chceš vědět víc? Koukni na náš web <span class="highlight">pisqworky.cz</span>, budeme se těšit:</p>
+                <p text="gameCTAText" class="text-black text-base font-bold">Chceš vědět víc? Koukni na náš web <span class="highlight" onclick="toggleXOIframe()">pisqworky.cz</span>, budeme se těšit.</p>
             </div>
         </div>
-        <img src="assets/img/qr_code_dark.svg" class="absolute right-0 bottom-0 mr-7 mb-[2.95rem] size-44">
+        <img text="gameQRImageSrc" src="assets/img/cs/qr_code_dark.svg" class="absolute right-0 bottom-0 mr-7 mb-[2.95rem] size-44">
+    </div>
+    <div class="xoIframe hidden absolute top-0 z-10 items-center justify-center min-w-[100dvw] min-h-[100dvh] bg-black/40">
+        <div class="relative w-[93%]">
+            <img src="assets/img/x_red.svg" class="absolute z-20 -top-5 -right-5 w-14 p-3 bg-white rounded-2xl shadow-2xl" onclick="toggleXOIframe()">
+            <iframe text="iframeSrc" src="https://pisqworky.cz" class="w-full min-h-[93dvh] rounded-2xl bg-gray" frameborder="0"></iframe>
+        </div>
     </div>
 </body>
 </html>

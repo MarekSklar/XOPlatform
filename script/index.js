@@ -199,3 +199,10 @@ function playGameRecord() {
         i++;
     }, 400);
 }
+
+// toggle XO web iframe
+function toggleXOIframe() {
+    const iframe = document.querySelector(".xoIframe");
+    iframe.classList.toggle("hidden");
+    iframe.classList.toggle("flex");
+}
