@@ -599,6 +599,7 @@ button {
 }
 
 .highlight {
+  cursor: pointer;
   font-size: 1.125rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
@@ -721,6 +722,14 @@ button {
   position: relative;
 }
 
+.-right-5 {
+  right: -1.25rem;
+}
+
+.-top-5 {
+  top: -1.25rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -729,48 +738,8 @@ button {
   right: 0px;
 }
 
-.right-2 {
-  right: 0.5rem;
-}
-
 .top-0 {
   top: 0px;
-}
-
-.top-2 {
-  top: 0.5rem;
-}
-
-.right-3 {
-  right: 0.75rem;
-}
-
-.top-3 {
-  top: 0.75rem;
-}
-
-.-right-3 {
-  right: -0.75rem;
-}
-
-.-top-3 {
-  top: -0.75rem;
-}
-
-.-right-4 {
-  right: -1rem;
-}
-
-.-top-4 {
-  top: -1rem;
-}
-
-.-right-5 {
-  right: -1.25rem;
-}
-
-.-top-5 {
-  top: -1.25rem;
 }
 
 .z-10 {
@@ -853,14 +822,6 @@ button {
   min-height: 100dvh;
 }
 
-.min-h-\[95dvh\] {
-  min-height: 95dvh;
-}
-
-.min-h-\[92dvh\] {
-  min-height: 92dvh;
-}
-
 .min-h-\[93dvh\] {
   min-height: 93dvh;
 }
@@ -881,8 +842,8 @@ button {
   width: 50%;
 }
 
-.w-\[95\%\] {
-  width: 95%;
+.w-\[93\%\] {
+  width: 93%;
 }
 
 .w-fit {
@@ -892,22 +853,6 @@ button {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[92\%\] {
-  width: 92%;
-}
-
-.w-\[93\%\] {
-  width: 93%;
-}
-
-.w-\[93dvh\] {
-  width: 93dvh;
-}
-
-.w-\[93dvw\] {
-  width: 93dvw;
 }
 
 .min-w-44 {
@@ -997,6 +942,11 @@ button {
   background-color: rgb(206 10 40 / var(--tw-bg-opacity));
 }
 
+.bg-gray {
+  --tw-bg-opacity: 1;
+  background-color: rgb(179 178 178 / var(--tw-bg-opacity));
+}
+
 .bg-red\/20 {
   background-color: rgb(227 24 55 / 0.2);
 }
@@ -1004,11 +954,6 @@ button {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray {
-  --tw-bg-opacity: 1;
-  background-color: rgb(179 178 178 / var(--tw-bg-opacity));
 }
 
 .bg-\[radial-gradient\(closest-side\2c _var\(--tw-gradient-stops\)\)\] {

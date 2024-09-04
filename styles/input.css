@@ -83,6 +83,6 @@
     }
 
     .highlight {
-        @apply text-lg text-red;
+        @apply text-lg text-red cursor-pointer;
     }
 }

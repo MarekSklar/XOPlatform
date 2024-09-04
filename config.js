@@ -1,5 +1,5 @@
 const config = {
-    selectedLanguage: "sk",
+    selectedLanguage: "cs",
     elements: {
         menuText1: {
             type: "text",
