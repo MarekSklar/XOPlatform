@@ -10,11 +10,11 @@ app.get('/', (_, res) => {
 });
 
 // Proxy configuration
-app.use('/api/amos-game-statistics', createProxyMiddleware({
-  target: 'http://odevzdavani.tourdeapp.cz:1337',  // Your HTTP API
-  changeOrigin: true,  // Needed for virtual hosted sites
-  secure: false,       // Ignore SSL certificates (useful for self-signed certificates)
-}));
+// app.use('/api/amos-game-statistics', createProxyMiddleware({
+//   target: 'http://odevzdavani.tourdeapp.cz:1337',  // Your HTTP API
+//   changeOrigin: true,  // Needed for virtual hosted sites
+//   secure: false,       // Ignore SSL certificates (useful for self-signed certificates)
+// }));
 
 
 app.listen(3000, () => {
