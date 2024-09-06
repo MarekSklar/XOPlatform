@@ -16,7 +16,7 @@ app.get('/', (_, res) => {
 //   secure: false,       // Ignore SSL certificates (useful for self-signed certificates)
 // }));
 
-
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
 });
