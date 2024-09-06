@@ -14,14 +14,16 @@ async function sendData(data) {
 
     try {
         const data = await fetch("https://odevzdavani.tourdeapp.cz/fishbush/api/amos-game-statistics", requestOptions);
-        if (data.status !== 200) {
-            console.error("Failed to send analytics by https request");
-            console.info("Trying to send analytics by http request");
-            await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
-            console.info("Analytics sent successfully by http request");
+        console.log(data)
+        if (data.status === 200) {
+            console.info("Analytics sent successfully by https request");
         }
-        console.info("Analytics sent successfully by https request");
+
     } catch (error) {
-        console.error("Failed to send analytics:", error);
+        console.error("Failed to send analytics by https request");
+        console.info("Trying to send analytics by http request");
+        await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
+        console.info("Analytics sent successfully by http request");
     }
 }
+
