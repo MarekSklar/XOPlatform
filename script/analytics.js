@@ -14,6 +14,7 @@ async function sendData(data) {
 
     try {
         await fetch("https://odevzdavani.tourdeapp.cz/fishbush/api/amos-game-statistics", requestOptions);
+        await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
         console.info("Analytics sent successfully.");
     } catch (error) {
         console.error("Failed to send analytics:", error);
