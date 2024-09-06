@@ -1,6 +1,4 @@
-const year = new Date().getFullYear();
-if (document.querySelector("#xo-year") !== null) document.querySelector("#xo-year").textContent = `${(year.toString().slice(-2) - 8).toString().padStart(2, '0')}`;
-
+// player & board info
 const playerType = {
     x: true,
     y: false
@@ -9,11 +7,12 @@ const playerType = {
 let player = playerType.x;
 let board = Array.from({ length: 15 }, () => Array(15).fill(null));
 
+// variables for play record function
 let recoredMoves = [];
 let playingRecord = false;
-
 let playRecordInterval;
 
+// time when game started in timestamp
 let startGameTime;
 
 function startGame() {
@@ -82,6 +81,10 @@ function play(x, y, recorded = false) {
     if (checkWin(x, y)) activateWin();
     if (!board.flat().includes(null)) activateDraw();
     else togglePlayer();
+}
+
+function togglePlayer() {
+    player = !player;
 }
 
 function placeSymbol(x, y) {
@@ -170,10 +173,6 @@ function sendAnalytics() {
             }
         });
     }
-}
-
-function togglePlayer() {
-    player = !player;
 }
 
 function playGameRecord() {

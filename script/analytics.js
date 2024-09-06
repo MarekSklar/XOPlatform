@@ -13,8 +13,8 @@ async function sendData(data) {
     };
 
     try {
-        await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
-        console.info("Anylytics sent successfully.");
+        await fetch("/api/amos-game-statistics", requestOptions);
+        console.info("Analytics sent successfully.");
     } catch (error) {
         console.error("Failed to send analytics.");
     }
