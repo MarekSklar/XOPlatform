@@ -1,8 +1,6 @@
 async function sendData(data) {
     const rawData = JSON.stringify(data);
 
-    console.info(rawData)
-
     const requestOptions = {
         method: "POST",
         headers: {
