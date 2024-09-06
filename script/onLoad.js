@@ -27,7 +27,6 @@ generateBoard();
 // change year of current XO
 function currentXOYear() {
     const year = new Date().getFullYear();
-    console.log(document.querySelector("#xo-year"));
     
     if (document.querySelector("#xo-year") !== null) document.querySelector("#xo-year").textContent = `${(year.toString().slice(-2) - 8).toString().padStart(2, '0')}`;
 }
