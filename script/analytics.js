@@ -1,6 +1,6 @@
 async function sendData(data) {
     const rawData = JSON.stringify(data);
-    
+
     console.info(rawData)
 
     const requestOptions = {
@@ -13,9 +13,14 @@ async function sendData(data) {
     };
 
     try {
-        await fetch("https://odevzdavani.tourdeapp.cz/fishbush/api/amos-game-statistics", requestOptions);
-        await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
-        console.info("Analytics sent successfully.");
+        const data = await fetch("https://odevzdavani.tourdeapp.cz/fishbush/api/amos-game-statistics", requestOptions);
+        if (data.status !== 200) {
+            console.error("Failed to send analytics by https request");
+            console.info("Trying to send analytics by http request");
+            await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
+            console.info("Analytics sent successfully by http request");
+        }
+        console.info("Analytics sent successfully by https request");
     } catch (error) {
         console.error("Failed to send analytics:", error);
     }
