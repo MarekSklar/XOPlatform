@@ -21,7 +21,7 @@ async function sendData(data) {
     } catch (error) {
         console.error("Failed to send analytics by https request");
         console.info("Trying to send analytics by http request");
-        await fetch("http://odevzdavani.tourdeapp.cz:1337/api/amos-game-statistics", requestOptions);
+        await fetch("http://odevzdavani.tourdeapp.cz/fishbush/api/amos-game-statistics", requestOptions);
         console.info("Analytics sent successfully by http request");
     }
 }
