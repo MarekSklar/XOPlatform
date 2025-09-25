@@ -149,30 +149,11 @@ function activateWin() {
         document.querySelector("#win-popup-o").classList.remove("hidden");
         document.querySelector("#win-popup-o").classList.add("flex");
     }
-    
-    sendAnalytics();
 }
 
 function activateDraw() {
     document.querySelector("#win-popup-draw").classList.remove("hidden");
     document.querySelector("#win-popup-draw").classList.add("flex");
-
-    sendAnalytics();
-}
-
-function sendAnalytics() {
-    if (!playingRecord) {
-        sendData({
-            data: {
-                language: config.selectedLanguage,
-                winner: (!board.flat().includes(null)) ? "draw" : (player ? "x" : "o"),
-                moves: recoredMoves,
-                movesCount: recoredMoves.length,
-                board,
-                duration: new Date().getTime() - startGameTime
-            }
-        });
-    }
 }
 
 function playGameRecord() {
